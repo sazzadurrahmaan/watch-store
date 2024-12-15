@@ -55,7 +55,7 @@
             <div class="flex gap-3 items-center" id="bandColors">
               <!-- Band Color Options -->
               <div data-color="purple"
-                class="band-option w-[24px] h-[24px] rounded-full border-2 border-[#816BFF] flex items-center justify-center cursor-pointer">
+                class="band-option w-[24px] h-[24px] rounded-full border border-[#816BFF] flex items-center justify-center cursor-pointer">
                 <div class="w-[16px] h-[16px] bg-[#816BFF] rounded-full"></div>
               </div>
               <div class="w-[16px] h-[16px] bg-[#1FCEC9] rounded-full"></div>
@@ -65,40 +65,36 @@
           </div>
 
           <!-- Wrist Size -->
-          <div class="mb-4">
-            <p class="text-lg font-medium mb-2">Wrist Size</p>
-            <div class="flex gap-2" id="wristSizes">
+          <div class="mb-4 ">
+            <p class="text-[18px] font-bold mb-2 text-[#364A63]">Wrist Size</p>
+            <div class="flex gap-2 font-bold text-[#8091A7]" id="wristSizes">
               <!-- Wrist Size Buttons -->
               <button data-size="S" data-price="69"
-                class="size-option border-2 border-purple-500 px-4 py-1 rounded-md text-purple-500 font-medium">S
+                class="size-option border  px-4 py-1 rounded-[3px]"><span class="text-[#364A63]">S</span>
                 $69</button>
               <button data-size="M" data-price="79"
-                class="size-option border border-gray-300 px-4 py-1 rounded-md text-gray-500">M $79</button>
+                class="size-option border  px-4 py-1 rounded-[3px]"><span class="text-[#364A63]">M</span> $79</button>
               <button data-size="L" data-price="89"
-                class="size-option border border-gray-300 px-4 py-1 rounded-md text-gray-500">L $89</button>
+                class="size-option border  px-4 py-1 rounded-[3px]"><span class="text-[#364A63]">L</span> $89</button>
               <button data-size="XL" data-price="99"
-                class="size-option border border-gray-300 px-4 py-1 rounded-md text-gray-500">XL $99</button>
+                class="size-option border  px-4 py-1 rounded-[3px]"><span class="text-[#364A63]">XL</span> $99</button>
             </div>
           </div>
 
           <!-- Quantity and Add to Cart -->
           <div class="flex items-center gap-4">
             <!-- Quantity Control -->
-            <div class="flex items-center border rounded-md overflow-hidden">
-              <button id="decreaseQty" class="px-3 py-1 bg-gray-100 text-gray-700">−</button>
-              <input id="quantity" type="text" value="0" class="w-12 text-center border-l border-r focus:outline-none">
-              <button id="increaseQty" class="px-3 py-1 bg-gray-100 text-gray-700">+</button>
-            </div>
+            <div class="flex items-center border text-[18px] rounded-[3px] overflow-hidden  text-[#8091A7]">
+              <button id="decreaseQty" class="px-3 py-2 ">−</button>
+              <input id="quantity" type="text" value="0" class="text-[#364A63] w-14 px-3 py-2 text-center border-l border-r focus:outline-none">
+              <button id="increaseQty" class="px-3 py-2 ">+</button>
+            </div> 
             <!-- Add to Cart Button -->
-            <button id="addToCart" class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md">Add to
+            <button id="addToCart" class="bg-[#6576FF] text-white px-4 py-2 rounded-md font-bold text-[13px] leading-[20px]">Add to
               Cart</button>
             <!-- Heart Icon -->
-            <button>
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-400 hover:text-purple-500"
-                viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12.76 3.5a5.85 5.85 0 0 1 4.3 1.88l.05.05a5.85 5.85 0 0 1 0 8.24L12 18.9l-5.11-5.23a5.85 5.85 0 0 1 0-8.24 5.85 5.85 0 0 1 8.24 0l.05.05.05-.05a5.85 5.85 0 0 1 4.3-1.88z" />
-              </svg>
+            <button class="w-[20px] h-[20px]">
+                <img src="images/heart.svg" alt="">
             </button>
           </div>
         </div>
@@ -106,7 +102,7 @@
       </div>
     </div>
   </div>
-  
+
   <script src="app.js"></script>
 
 </body>
