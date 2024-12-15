@@ -11,6 +11,25 @@
     body {
       font-family: 'Roboto', sans-serif;
     }
+
+    .hidden {
+      display: none;
+    }
+
+    .fixed {
+      position: fixed;
+    }
+
+    .inset-0 {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .z-50 {
+      z-index: 50;
+    }
   </style>
 </head>
 
@@ -121,27 +140,42 @@
   </button>
 
   <!-- Cart Modal -->
-  <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-    <div class="bg-white rounded-lg shadow-lg p-6 w-2/3">
-      <h2 class="text-xl font-bold mb-4">Your Cart</h2>
-      <table class="w-full text-left border-collapse">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Color</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody id="cartItems"></tbody>
-      </table>
-      <div class="flex justify-between mt-4">
-        <span id="totalPrice" class="text-lg font-semibold"></span>
-        <button id="closeModal" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
-          Close
+  <div id="cartModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
+    <div class="bg-white w-96 rounded-lg shadow-lg p-8 relative">
+      <!-- Modal Header -->
+      <h2 class="text-xl font-semibold mb-4">Your Cart</h2>
+      <ul class="space-y-2 grid grid-cols-7 items-center border-b py-5 gap-2 text-[14px] font-normal text-[#8091A7]">
+        <li class="col-span-3">Item</li>
+        <li class="col-span-1">Color</li>
+        <li class="col-span-1">Size</li>
+        <li class="col-span-1">Qnt</li>
+        <li class="col-span-1">Price</li>
+      </ul>
+      <!-- Cart Items -->
+      <ul id="cartItems" class="space-y-2 py-5 text-[#364A63]">
+        <!-- Dynamic items will be injected here -->
+      </ul>
+
+      <!-- Total Price -->
+      <div class="flex justify-between text-[16px] font-bold mt-2 text-[#364A63]">
+        <span>Total</span>
+        <span id="totalPrice">$0.00</span>
+      </div>
+
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-2 mt-6">
+        <button id="closeCart" class="px-4 py-2 border border-[#DBDFEA] text-[#364A63] rounded">
+          Continue Shopping
+        </button>
+        <button id="proceed" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+          Checkout
         </button>
       </div>
     </div>
   </div>
+
+
   <script src="app.js"></script>
 
 </body>

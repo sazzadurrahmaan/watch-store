@@ -2,38 +2,38 @@
 const stars = document.getElementById("stars");
 
 //object for star image
-const starObject= [
-{
-    id:1,
+const starObject = [
+  {
+    id: 1,
     image: '/images/Vector.svg',
-},
-{
-    id:2,
+  },
+  {
+    id: 2,
     image: '/images/Vector.svg',
-},
-{
-    id:3,
+  },
+  {
+    id: 3,
     image: '/images/Vector.svg',
-},
-{
-    id:4,
+  },
+  {
+    id: 4,
     image: '/images/star-half.svg',
-},
-{
-    id:5,
+  },
+  {
+    id: 5,
     image: '/images/empty-star.svg',
-},
+  },
 
 ]
 // Create an img element for each star
 starObject.map(star => {
-    
-    const img = document.createElement('img');
-    img.src = star.image; 
-    img.alt = `Star ${star.id}`; 
-    img.className = 'w-[18px]'; 
-    
-    stars.appendChild(img);
+
+  const img = document.createElement('img');
+  img.src = star.image;
+  img.alt = `Star ${star.id}`;
+  img.className = 'w-[18px]';
+
+  stars.appendChild(img);
 });
 
 // Elements
@@ -93,12 +93,20 @@ decreaseQtyBtn.addEventListener("click", () => {
 
 // 4. Add to Cart
 addToCartBtn.addEventListener("click", () => {
+  // Check if a size is selected
+  if (!selectedSize) {
+    alert("Please select a wrist size!");
+    return;
+  }
+
+  // Check if quantity is greater than 0
   if (quantity === 0) {
     alert("Please select at least one quantity!");
     return;
   }
 
-  const price = sizeOptions.find((btn) => btn.dataset.size === selectedSize)?.dataset.price || 79;
+  // Fetch the price based on the selected size
+  const price = Array.from(sizeOptions).find((btn) => btn.dataset.size === selectedSize)?.dataset.price || 79;
 
   // Add item to cart
   cart.push({
@@ -113,37 +121,67 @@ addToCartBtn.addEventListener("click", () => {
   checkoutBtn.classList.remove("hidden");
   checkoutBtn.textContent = `Checkout (${cart.length})`;
 
-  // Reset Quantity
+
+  // Reset Quantity and Size
   quantity = 0;
   quantityInput.value = 0;
 
-  alert("Item added to cart!");
+  sizeOptions.forEach((btn) => btn.classList.remove("border-blue-500")); // Reset size button highlights
+  selectedSize = null;
+
+
+  // Open Cart Modal and Render Cart Items
+  openCartModal();
 });
 
-// 5. Open Cart Modal
 checkoutBtn.addEventListener("click", () => {
-  cartItemsContainer.innerHTML = ""; // Clear previous items
+  openCartModal();
+})
+
+// Function to open the cart modal and display items
+function openCartModal() {
+  const cartModal = document.getElementById("cartModal");
+  const cartItemsList = document.getElementById("cartItems");
+  const totalPriceElem = document.getElementById("totalPrice"); // Select total price element
+
+  // Clear previous items
+  cartItemsList.innerHTML = "";
+
+  // Initialize total price
   let totalPrice = 0;
 
-  cart.forEach((item, index) => {
-    const row = `
-      <tr>
-        <td>${item.name} (${item.size})</td>
-        <td class="capitalize">${item.color}</td>
-        <td>$${item.price} x ${item.quantity}</td>
-      </tr>
+  // Render each cart item
+  cart.forEach((item) => {
+    const listItem = document.createElement("div");
+    listItem.classList.add("border-b", "pb-2", "flex", "justify-between", "text-sm");
+
+    const itemTotal = item.price * item.quantity; // Calculate total for this item
+    totalPrice += itemTotal; // Add to total price
+
+    listItem.innerHTML = `
+      <ul class="grid grid-cols-7 gap-2 text-[#364A63] ">
+        <li class="font-normal  col-span-3">${item.name}</li> 
+        <li class="col-span-1">${item.color}</li> 
+        <li class="col-span-1 font-bold">${item.size}</li> 
+         <li class="col-span-1 font-bold">${item.quantity}<p>
+        <li class="col-span-1 font-bold">$${itemTotal.toFixed(2)}</li>
+      </ul>
     `;
-    totalPrice += item.price * item.quantity;
-    cartItemsContainer.insertAdjacentHTML("beforeend", row);
+
+    cartItemsList.appendChild(listItem);
   });
 
-  totalPriceElem.textContent = `Total: $${totalPrice}`;
-  cartModal.classList.remove("hidden");
-});
+  // Update total price display
+  totalPriceElem.textContent = `$${totalPrice.toFixed(2)}`;
 
-// 6. Close Cart Modal
-closeModalBtn.addEventListener("click", () => {
-  cartModal.classList.add("hidden");
+  // Show the modal
+  cartModal.classList.remove("hidden");
+}
+
+
+// Close cart modal
+document.getElementById("closeCart").addEventListener("click", () => {
+  document.getElementById("cartModal").classList.add("hidden");
 });
 
 // Band Color Selection Logic
@@ -171,4 +209,15 @@ bandOptions.forEach(option => {
       mainThumbnail.src = thumbnailMap[selectedColor];
     }
   });
+});
+
+// Proceed to Checkout Functionality
+const proceedToCheckoutBtn = document.getElementById("proceed");
+
+proceedToCheckoutBtn.addEventListener("click", () => {
+
+  document.getElementById("cartModal").classList.add("hidden");
+  cart = [];
+  checkoutBtn.textContent = "";
+  checkoutBtn.classList.add("hidden");
 });
