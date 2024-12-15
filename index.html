@@ -20,7 +20,8 @@
     <div class=" flex flex-col md:flex-row items-center justify-center gap-10 p-12 max-w-[1320px]">
       <!-- Thumbnail -->
       <div class="max-w-[630px] h-auto">
-        <img id="mainThumbnail" src="images/purple.png" alt="Smart Watch" class=" w-full object-cover  rounded-[4px]">
+        <img id="mainThumbnail" src="images/purple.png" alt="Main Thumbnail"
+          class=" w-full object-cover  rounded-[4px]">
       </div>
       <!-- Product Details -->
       <div class="max-w-[630px]">
@@ -51,16 +52,25 @@
         <div>
           <!-- Band Color -->
           <div class="mb-4 text-[#364A63]">
-            <p class=" font-bold text-[18px] mb-2">Band Color</p>
+            <p class="font-bold text-[18px] mb-2">Band Color</p>
             <div class="flex gap-3 items-center" id="bandColors">
               <!-- Band Color Options -->
               <div data-color="purple"
-                class="band-option w-[24px] h-[24px] rounded-full border border-[#816BFF] flex items-center justify-center cursor-pointer">
+                class="band-option w-[24px] h-[24px] rounded-full border flex items-center justify-center cursor-pointer">
                 <div class="w-[16px] h-[16px] bg-[#816BFF] rounded-full"></div>
               </div>
-              <div class="w-[16px] h-[16px] bg-[#1FCEC9] rounded-full"></div>
-              <div class="w-[16px] h-[16px] bg-[#4B97D3] rounded-full"></div>
-              <div class="w-[16px] h-[16px] bg-[#3B4747] rounded-full"></div>
+              <div data-color="turquoise"
+                class="band-option w-[24px] h-[24px] rounded-full border flex items-center justify-center cursor-pointer">
+                <div class="w-[16px] h-[16px] bg-[#1FCEC9] rounded-full"></div>
+              </div>
+              <div data-color="blue"
+                class="band-option w-[24px] h-[24px] rounded-full border flex items-center justify-center cursor-pointer">
+                <div class="w-[16px] h-[16px] bg-[#4B97D3] rounded-full"></div>
+              </div>
+              <div data-color="black"
+                class="band-option w-[24px] h-[24px] rounded-full border flex items-center justify-center cursor-pointer">
+                <div class="w-[16px] h-[16px] bg-[#3B4747] rounded-full"></div>
+              </div>
             </div>
           </div>
 
@@ -69,15 +79,15 @@
             <p class="text-[18px] font-bold mb-2 text-[#364A63]">Wrist Size</p>
             <div class="flex gap-2 font-bold text-[#8091A7]" id="wristSizes">
               <!-- Wrist Size Buttons -->
-              <button data-size="S" data-price="69"
-                class="size-option border  px-4 py-1 rounded-[3px]"><span class="text-[#364A63]">S</span>
+              <button data-size="S" data-price="69" class="size-option border  px-4 py-1 rounded-[3px]"><span
+                  class="text-[#364A63]">S</span>
                 $69</button>
-              <button data-size="M" data-price="79"
-                class="size-option border  px-4 py-1 rounded-[3px]"><span class="text-[#364A63]">M</span> $79</button>
-              <button data-size="L" data-price="89"
-                class="size-option border  px-4 py-1 rounded-[3px]"><span class="text-[#364A63]">L</span> $89</button>
-              <button data-size="XL" data-price="99"
-                class="size-option border  px-4 py-1 rounded-[3px]"><span class="text-[#364A63]">XL</span> $99</button>
+              <button data-size="M" data-price="79" class="size-option border  px-4 py-1 rounded-[3px]"><span
+                  class="text-[#364A63]">M</span> $79</button>
+              <button data-size="L" data-price="89" class="size-option border  px-4 py-1 rounded-[3px]"><span
+                  class="text-[#364A63]">L</span> $89</button>
+              <button data-size="XL" data-price="99" class="size-option border  px-4 py-1 rounded-[3px]"><span
+                  class="text-[#364A63]">XL</span> $99</button>
             </div>
           </div>
 
@@ -86,15 +96,17 @@
             <!-- Quantity Control -->
             <div class="flex items-center border text-[18px] rounded-[3px] overflow-hidden  text-[#8091A7]">
               <button id="decreaseQty" class="px-3 py-2 ">−</button>
-              <input id="quantity" type="text" value="0" class="text-[#364A63] w-14 px-3 py-2 text-center border-l border-r focus:outline-none">
+              <input id="quantity" type="text" value="0"
+                class="text-[#364A63] w-14 px-3 py-2 text-center border-l border-r focus:outline-none">
               <button id="increaseQty" class="px-3 py-2 ">+</button>
-            </div> 
+            </div>
             <!-- Add to Cart Button -->
-            <button id="addToCart" class="bg-[#6576FF] text-white px-4 py-2 rounded-md font-bold text-[13px] leading-[20px]">Add to
+            <button id="addToCart"
+              class="bg-[#6576FF] text-white px-4 py-2 rounded-md font-bold text-[13px] leading-[20px]">Add to
               Cart</button>
             <!-- Heart Icon -->
             <button class="w-[20px] h-[20px]">
-                <img src="images/heart.svg" alt="">
+              <img src="images/heart.svg" alt="">
             </button>
           </div>
         </div>
@@ -102,7 +114,34 @@
       </div>
     </div>
   </div>
+  <!-- Floating Checkout Button -->
+  <button id="checkoutBtn"
+    class="hidden fixed bottom-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg">
+    Checkout (0)
+  </button>
 
+  <!-- Cart Modal -->
+  <div id="cartModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-2/3">
+      <h2 class="text-xl font-bold mb-4">Your Cart</h2>
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Color</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody id="cartItems"></tbody>
+      </table>
+      <div class="flex justify-between mt-4">
+        <span id="totalPrice" class="text-lg font-semibold"></span>
+        <button id="closeModal" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
   <script src="app.js"></script>
 
 </body>
