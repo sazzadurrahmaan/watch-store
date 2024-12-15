@@ -12,7 +12,72 @@
         }
       </style>
 </head>
-<body class="text-gray-900">
-    <div>Hello World</div>
+<body>
+  <!-- Product Section -->
+  <div class="container mx-auto">
+    <div class=" flex flex-col md:flex-row items-center justify-center gap-10 p-12 max-w-[1320px]">
+      <!-- Thumbnail -->
+      <div class="max-w-[630px] h-auto">
+        <img id="mainThumbnail" src="images/purple.png" alt="Smart Watch"
+          class=" w-full object-cover  rounded-[4px]">
+      </div>
+      <!-- Product Details -->
+      <div class="max-w-[630px]">
+        <h1 class="font-bold text-[#364A63] text-[40px] leading-[44px]">Classy Modern Smart Watch</h1>
+       
+        <!-- reviews -->
+        <div  class="flex gap-2 items-center py-4">
+          <div id="stars" class="flex gap-2 items-center"></div>
+          <p class="text-[#8091A7] font-normal text-[14px]">(2 Reviews)</p>
+        </div>
+
+        <div class="flex items-center gap-3 leading-[30px]">
+          <p class="text-[#8091A7] line-through text-[20px] font-normal">$99.00</p>
+          <p class="text-[#6576FF] text-[24px] font-bold">$79.00</p>
+        </div>
+
+        <p class="mt-2 leading-[30px] font-normal text-[18px] text-[#8091A7]">
+          I must explain to you how all this mistaken idea of denoun cing ple praising pain was born and I will give you a complete account of the system, and expound the actual teaching.
+        </p>
+
+        <div>
+          <p><span> </span> </p>
+          <p><span> </span> </p>
+        </div>
+
+        <!-- Band Color Options -->
+        <div class="mt-4">
+          <h3 class="font-semibold mb-2">Band Color</h3>
+          <div class="flex space-x-3">
+            <button onclick="changeThumbnail('purple')" class="w-6 h-6 bg-purple-500 rounded-full"></button>
+            <button onclick="changeThumbnail('black')" class="w-6 h-6 bg-black rounded-full"></button>
+            <button onclick="changeThumbnail('cyan')" class="w-6 h-6 bg-cyan-500 rounded-full"></button>
+          </div>
+        </div>
+
+        <!-- Size Options -->
+        <div class="mt-4">
+          <h3 class="font-semibold mb-2">Wrist Size</h3>
+          <select id="wristSize" class="p-2 border rounded">
+            <option value="S">$69</option>
+            <option value="M">$79</option>
+            <option value="L">$89</option>
+            <option value="XL">$99</option>
+          </select>
+        </div>
+
+        <!-- Quantity & Add to Cart -->
+        <div class="mt-4 flex space-x-2 items-center">
+          <input id="quantity" type="number" min="1" value="1"
+            class="w-16 border p-2 rounded">
+          <button onclick="addToCart()" class="bg-blue-500 text-white px-4 py-2 rounded">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
