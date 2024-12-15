@@ -141,10 +141,10 @@
 
   <!-- Cart Modal -->
   <div id="cartModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
-    <div class="bg-white w-96 rounded-lg shadow-lg p-8 relative">
+    <div class="bg-white max-w-[651px] rounded-lg shadow-lg p-8 relative">
       <!-- Modal Header -->
       <h2 class="text-xl font-semibold mb-4">Your Cart</h2>
-      <ul class="space-y-2 grid grid-cols-7 items-center border-b py-5 gap-2 text-[14px] font-normal text-[#8091A7]">
+      <ul class="grid grid-cols-7 items-center justify-center border-b py-5 gap-4 text-[14px] font-normal text-[#8091A7]">
         <li class="col-span-3">Item</li>
         <li class="col-span-1">Color</li>
         <li class="col-span-1">Size</li>
@@ -152,14 +152,15 @@
         <li class="col-span-1">Price</li>
       </ul>
       <!-- Cart Items -->
-      <ul id="cartItems" class="space-y-2 py-5 text-[#364A63]">
+      <ul id="cartItems">
         <!-- Dynamic items will be injected here -->
       </ul>
 
       <!-- Total Price -->
-      <div class="flex justify-between text-[16px] font-bold mt-2 text-[#364A63]">
-        <span>Total</span>
-        <span id="totalPrice">$0.00</span>
+      <div class="grid grid-cols-7 items-center py-5 justify-center text-[16px] font-bold mt-2 text-[#364A63]">
+        <span class="col-span-5">Total</span>
+        <span class="col-span-1" id="totalQnt">0</span>
+        <span class="col-span-1" id="totalPrice">$0.00</span>
       </div>
 
 

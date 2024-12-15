@@ -143,6 +143,7 @@ function openCartModal() {
   const cartModal = document.getElementById("cartModal");
   const cartItemsList = document.getElementById("cartItems");
   const totalPriceElem = document.getElementById("totalPrice"); // Select total price element
+  const totalQuantity = document.getElementById("totalQnt");
 
   // Clear previous items
   cartItemsList.innerHTML = "";
@@ -150,17 +151,22 @@ function openCartModal() {
   // Initialize total price
   let totalPrice = 0;
 
+  let totalQnt =0;
+
   // Render each cart item
   cart.forEach((item) => {
     const listItem = document.createElement("div");
     listItem.classList.add("border-b", "pb-2", "flex", "justify-between", "text-sm");
-
+    
+    
     const itemTotal = item.price * item.quantity; // Calculate total for this item
     totalPrice += itemTotal; // Add to total price
 
+    totalQnt += item.quantity;
+    
     listItem.innerHTML = `
-      <ul class="grid grid-cols-7 gap-2 text-[#364A63] ">
-        <li class="font-normal  col-span-3">${item.name}</li> 
+      <ul class="grid grid-cols-7 items-center justify-center py-5 gap-4 text-[14px] font-normal text-[#364A63] ">
+        <li class="font-normal  col-span-3 text-nowrap">${item.name}</li> 
         <li class="col-span-1">${item.color}</li> 
         <li class="col-span-1 font-bold">${item.size}</li> 
          <li class="col-span-1 font-bold">${item.quantity}<p>
@@ -171,6 +177,7 @@ function openCartModal() {
     cartItemsList.appendChild(listItem);
   });
 
+ totalQuantity.textContent = totalQnt;
   // Update total price display
   totalPriceElem.textContent = `$${totalPrice.toFixed(2)}`;
 
