@@ -119,7 +119,7 @@ addToCartBtn.addEventListener("click", () => {
 
   // Update Checkout Button
   checkoutBtn.classList.remove("hidden");
-  checkoutBtn.innerHTML = `<p> Checkout <span class="bg-white px-2 rounded-[5px] w-[19px] h-[19px] mx-2">${cart.length}</span></p>`;
+  checkoutBtn.innerHTML = `<p class="cursor-pointer	"> Checkout <span class="bg-white px-2 rounded-[5px] w-[19px] h-[19px] mx-2">${cart.length}</span></p>`;
 
 
   // Reset Quantity and Size
