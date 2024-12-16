@@ -42,15 +42,15 @@ To view the specific version of the project:
 
 ### 1. Clone the repository:
     ```bash
-    git clone https://github.com/sazzadurrahmaan/watch-store.git
+           git clone https://github.com/sazzadurrahmaan/watch-store.git
 
 ### 2. For Html version 
     ```bash 
-    git checkout html-version
+           git checkout html-version
 
 ### 3. For React version 
     ```bash
-  git checkout react-version
+           git checkout react-version
 
 ## ⚡ Quick Start (HTML Version)
 Open the index.html file in your browser.
@@ -61,10 +61,10 @@ Go to the react-version branch.
 ### Install dependencies:
 
     ```bash
-    npm install
+           npm install
 ### Start the development Server
     ```bash
- npm run dev
+           npm run dev
 
 ### Visit http://localhost:5173 to view the project.
 
