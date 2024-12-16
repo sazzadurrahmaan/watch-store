@@ -165,9 +165,9 @@ function openCartModal() {
     totalQnt += item.quantity;
     
     listItem.innerHTML = `
-    <ul class="grid grid-cols-8 relative items-center gap-4 text-[14px] font-normal text-[#364A63] py-2">
+    <ul class="grid grid-cols-8 relative items-center gap-4 text-[12px] sm:text-[14px] font-normal text-[#364A63] py-2">
       <li class="col-span-1">
-        <img src="images/${item.color}.png" alt="${item.name}" class="w-[50px] h-[50px] rounded-lg object-cover">
+        <img src="images/${item.color}.png" alt="${item.name}" class="w-[35px] sm:w-[50px] h-[35px] sm:h-[50px] rounded-lg object-cover">
       </li>
       <li class="col-span-3 font-normal">${item.name}</li>
       <li class="col-span-1">${item.color}</li>
