@@ -8,6 +8,8 @@ import StarHalfImage from './assets/images/star-half.svg';
 import EmptyImage from './assets/images/empty-star.svg';
 import HeartImage from './assets/images/heart.svg';
 
+
+
 const starData = [
   { id: 1, image: StarImage },
   { id: 2, image: StarImage },
@@ -16,15 +18,16 @@ const starData = [
   { id: 5, image: EmptyImage },
 ];
 
+// Updated color-to-thumbnail mapping
 const thumbnailMap = {
-  "#816BFF": PurpleImage,
-  "#1FCEC9": CyanImage,
-  "#4B97D3": BlueImage,
-  "#3B4747": BlackImage,
+  purple: { colorCode: "#816BFF", image: PurpleImage },
+  cyan: { colorCode: "#1FCEC9", image: CyanImage },
+  blue: { colorCode: "#4B97D3", image: BlueImage },
+  black: { colorCode: "#3B4747", image: BlackImage },
 };
 
 const SmartWatchStore = () => {
-  const [mainThumbnail, setMainThumbnail] = useState(thumbnailMap.purple);
+  const [mainThumbnail, setMainThumbnail] = useState(thumbnailMap.purple.image);
   const [selectedColor, setSelectedColor] = useState("purple");
   const [selectedSize, setSelectedSize] = useState("M");
   const [quantity, setQuantity] = useState(0);
@@ -34,7 +37,7 @@ const SmartWatchStore = () => {
   // Update thumbnail based on selected color
   const updateThumbnail = (color) => {
     setSelectedColor(color);
-    setMainThumbnail(thumbnailMap[color]);
+    setMainThumbnail(thumbnailMap[color].image);
   };
 
   // Update size selection
@@ -109,20 +112,20 @@ const SmartWatchStore = () => {
             <p className="font-normal text-[12px] sm:text-[14px]  leading-[23px] flex flex-col">Model Number<span
               className="font-bold text-[16px] text-[#364A63]">Forerunner 290XT</span> </p>
           </div>
+       
           {/* Band Color */}
           <div className="mb-4 text-[#364A63]">
             <p className="font-bold text-[16px] sm:text-[18px] mb-2">Band Color</p>
-            <div className="flex gap-3 items-center" >
+            <div className="flex gap-3 items-center">
               {Object.keys(thumbnailMap).map((color) => (
                 <div
                   key={color}
                   onClick={() => updateThumbnail(color)}
-                  className={`band-option w-[20px] sm:w-[24px] h-[20px] sm:h-[24px] rounded-full border flex items-center justify-center cursor-pointer ${selectedColor === color ? "ring-2 ring-blue-500" : ""
-                    }`}
+                  className={`w-[24px] h-[24px] rounded-full border cursor-pointer ${selectedColor === color ? "ring-2 ring-blue-500" : ""}`}
                 >
                   <div
-                    className={`w-[16px] h-[16px] rounded-full mx-auto`}
-                    style={{ backgroundColor: color }}
+                    className="w-full h-full rounded-full"
+                    style={{ backgroundColor: thumbnailMap[color].colorCode }}
                   ></div>
                 </div>
               ))}
@@ -201,7 +204,7 @@ const SmartWatchStore = () => {
               <ui key={index} className="grid grid-cols-8 relative border-b items-center gap-4 text-[12px] sm:text-[14px] font-normal text-[#364A63] py-2">
                 <li class="col-span-1 list-none">
                   <img
-                    src={thumbnailMap[item.color]} // Fetch the correct image based on color
+                   src={thumbnailMap[item.color]?.image} // Fetch the correct image based on color
                     alt={`${item.color} watch`}
                     className="w-[40px] h-[40px] rounded-md"
                   />
@@ -221,7 +224,7 @@ const SmartWatchStore = () => {
             </div>
             <div className="flex justify-end gap-3 mt-4">
               <button onClick={() => setCartVisible(false)} className="border px-4 py-2 rounded">
-                Close
+                Continue Shopping
               </button>
               <button
                 onClick={() => {
