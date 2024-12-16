@@ -13,14 +13,14 @@ const starData = [
   { id: 2, image: StarImage },
   { id: 3, image: StarImage },
   { id: 4, image: StarHalfImage },
-  { id: 5, image: EmptyImage},
+  { id: 5, image: EmptyImage },
 ];
 
 const thumbnailMap = {
-  purple: PurpleImage,
-  cyan: CyanImage,
-  blue: BlueImage,
-  black: BlackImage,
+  "#816BFF": PurpleImage,
+  "#1FCEC9": CyanImage,
+  "#4B97D3": BlueImage,
+  "#3B4747": BlackImage,
 };
 
 const SmartWatchStore = () => {
@@ -60,6 +60,7 @@ const SmartWatchStore = () => {
     };
     setCart((prev) => [...prev, newItem]);
     setQuantity(0);
+    setCartVisible(true)
   };
 
   // Calculate total price and quantity
@@ -93,32 +94,31 @@ const SmartWatchStore = () => {
 
           {/* Price */}
           <div className="flex items-center gap-3 leading-[30px]">
-          <p className="text-[#8091A7] line-through text-[15px] sm:text-[20px] font-normal">$99.00</p>
-          <p className="text-[#6576FF] text-[18px]  sm:text-[24px] font-bold">$79.00</p>
-        </div>
-        
-        <p className="mt-2 leading-[30px] font-normal text-[15px] sm:text-[18px] text-[#8091A7] py-2">
-          I must explain to you how all this mistaken idea of denoun cing ple praising pain was born and I will give you
-          a complete account of the system, and expound the actual teaching.
-        </p>
-         
-        <div className="text-[#8091A7] flex gap-5 py-5">
-          <p className="font-normal text-[12px] sm:text-[14px] leading-[23px] flex flex-col">Type<span
+            <p className="text-[#8091A7] line-through text-[15px] sm:text-[20px] font-normal">$99.00</p>
+            <p className="text-[#6576FF] text-[18px]  sm:text-[24px] font-bold">$79.00</p>
+          </div>
+
+          <p className="mt-2 leading-[30px] font-normal text-[15px] sm:text-[18px] text-[#8091A7] py-2">
+            I must explain to you how all this mistaken idea of denoun cing ple praising pain was born and I will give you
+            a complete account of the system, and expound the actual teaching.
+          </p>
+
+          <div className="text-[#8091A7] flex gap-5 py-5">
+            <p className="font-normal text-[12px] sm:text-[14px] leading-[23px] flex flex-col">Type<span
               className="font-bold text-[14px] sm:text-[16px] text-[#364A63]">Watch </span> </p>
-          <p className="font-normal text-[12px] sm:text-[14px]  leading-[23px] flex flex-col">Model Number<span
+            <p className="font-normal text-[12px] sm:text-[14px]  leading-[23px] flex flex-col">Model Number<span
               className="font-bold text-[16px] text-[#364A63]">Forerunner 290XT</span> </p>
-        </div>
+          </div>
           {/* Band Color */}
           <div className="mb-4 text-[#364A63]">
-          <p className="font-bold text-[16px] sm:text-[18px] mb-2">Band Color</p>
+            <p className="font-bold text-[16px] sm:text-[18px] mb-2">Band Color</p>
             <div className="flex gap-3 items-center" >
               {Object.keys(thumbnailMap).map((color) => (
                 <div
                   key={color}
                   onClick={() => updateThumbnail(color)}
-                  className={`band-option w-[20px] sm:w-[24px] h-[20px] sm:h-[24px] rounded-full border flex items-center justify-center cursor-pointer ${
-                    selectedColor === color ? "ring-2 ring-blue-500" : ""
-                  }`}
+                  className={`band-option w-[20px] sm:w-[24px] h-[20px] sm:h-[24px] rounded-full border flex items-center justify-center cursor-pointer ${selectedColor === color ? "ring-2 ring-blue-500" : ""
+                    }`}
                 >
                   <div
                     className={`w-[16px] h-[16px] rounded-full mx-auto`}
@@ -137,9 +137,8 @@ const SmartWatchStore = () => {
                 <button
                   key={size}
                   onClick={() => updateSize(size)}
-                  className={`border  px-4 py-1 rounded-[3px] ${
-                    selectedSize === size ? "border-blue-500" : ""
-                  }`}
+                  className={`border  px-4 py-1 rounded-[3px] ${selectedSize === size ? "border-blue-500" : ""
+                    }`}
                 >
                   {size} <span className="text-[#8091A7]">${69 + (size.charCodeAt(0) - "S".charCodeAt(0)) * 10}</span>
                 </button>
@@ -168,7 +167,7 @@ const SmartWatchStore = () => {
             >
               Add to Cart
             </button>
-              <button class="w-[17px] sm:w-[20px] h-[17px] sm:h-[20px]">
+            <button class="w-[17px] sm:w-[20px] h-[17px] sm:h-[20px]">
               <img src={HeartImage} alt="heartimage" />
             </button>
           </div>
@@ -188,23 +187,37 @@ const SmartWatchStore = () => {
       {/* Cart Modal */}
       {cartVisible && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center">
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-[600px] w-full">
+          <div className="bg-white max-w-[90%] sm:max-w-[651px] rounded-lg shadow-lg p-8 relative">
             <h2 className="text-xl font-bold mb-4">Your Cart</h2>
-            <ul>
-              {cart.map((item, index) => (
-                <li key={index} className="flex justify-between py-2 border-b">
-                  <div>
-                    {item.name} - {item.color} - {item.size}
-                  </div>
-                  <div>
-                    {item.quantity} x ${item.price} = ${item.quantity * item.price}
-                  </div>
-                </li>
-              ))}
+            <ul class="grid grid-cols-8 items-center justify-center border-b py-5 gap-4 text-[12px] sm:text-[14px] font-normal text-[#8091A7]">
+              <li class="col-span-4">Item</li>
+              <li class="col-span-1">Color</li>
+              <li class="col-span-1">Size</li>
+              <li class="col-span-1">Qnt</li>
+              <li class="col-span-1">Price</li>
             </ul>
-            <div className="flex justify-between mt-4 font-bold">
-              <span>Total Quantity: {totalQuantity}</span>
-              <span>Total Price: ${totalPrice.toFixed(2)}</span>
+
+            {cart.map((item, index) => (
+              <ui key={index} className="grid grid-cols-8 relative border-b items-center gap-4 text-[12px] sm:text-[14px] font-normal text-[#364A63] py-2">
+                <li class="col-span-1 list-none">
+                  <img
+                    src={thumbnailMap[item.color]} // Fetch the correct image based on color
+                    alt={`${item.color} watch`}
+                    className="w-[40px] h-[40px] rounded-md"
+                  />
+                </li>
+                <li class="col-span-3 list-none">{item.name}</li>
+                <li class="col-span-1 list-none">{item.color}</li>
+                <li class="col-span-1 font-bold list-none">{item.size}</li>
+                <li class="col-span-1 font-bold list-none">{item.quantity}</li>
+                <li class="col-span-1 font-bold list-none absolute right-0">{item.price}</li>
+              </ui>
+            ))}
+
+            <div className="grid grid-cols-8 relative items-center py-5 justify-center text-[14px] sm:text-[16px] font-bold mt-2 text-[#364A63]">
+              <span class="col-span-6">Total </span>
+              <span class="col-span-1">{totalQuantity}</span>
+              <span class="col-span-1">${totalPrice.toFixed(2)}</span>
             </div>
             <div className="flex justify-end gap-3 mt-4">
               <button onClick={() => setCartVisible(false)} className="border px-4 py-2 rounded">

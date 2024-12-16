@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import SmartWatchStore from './SmartWatchStore'
 
 function App() {
