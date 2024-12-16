@@ -26,7 +26,7 @@ const starData = [
 
 const thumbnailMap = {
   purple: 'images/purple.png',
-  turquoise: 'images/cyan.png',
+  cyan: 'images/cyan.png',
   blue: 'images/blue.png',
   black: 'images/black.png'
 };
@@ -38,7 +38,7 @@ let cart = [];
 
 // --- Functions ---
 // Render star images
-function renderStars() {
+const renderStars = () => {
   const fragment = document.createDocumentFragment();
   starData.forEach(({ id, image }) => {
     const img = document.createElement('img');
@@ -51,7 +51,7 @@ function renderStars() {
 }
 
 // Update thumbnail
-function updateThumbnail(color) {
+const updateThumbnail = (color) => {
   selectedColor = color;
   mainThumbnail.src = thumbnailMap[color] || `images/${color}.png`;
   bandColors.forEach(opt => opt.classList.remove('ring-2', 'ring-blue-500'));
@@ -59,20 +59,20 @@ function updateThumbnail(color) {
 }
 
 // Update size selection
-function updateSize(size) {
+const updateSize = (size) => {
   selectedSize = size;
   sizeOptions.forEach(btn => btn.classList.remove('border-blue-500'));
   document.querySelector(`[data-size="${size}"]`)?.classList.add('border-blue-500');
 }
 
 // Update quantity
-function updateQuantity(value) {
+const updateQuantity = (value) => {
   quantity = Math.max(0, quantity + value);
   quantityInput.value = quantity;
 }
 
 // Add item to cart
-function addToCart() {
+const addToCart = () => {
   if (!selectedSize) return alert("Please select a wrist size!");
   if (quantity === 0) return alert("Please select at least one quantity!");
 
@@ -94,7 +94,7 @@ function addToCart() {
 }
 
 // Open cart modal
-function openCartModal() {
+const openCartModal = () => {
   cartItemsContainer.innerHTML = "";
   let totalPrice = 0, totalQnt = 0;
 
@@ -125,12 +125,12 @@ function openCartModal() {
 }
 
 // Close cart modal
-function closeCartModal() {
+const closeCartModal = () => {
   cartModal.classList.add("hidden");
 }
 
 // Proceed to checkout
-function proceedToCheckout() {
+const proceedToCheckout = () => {
   cart = [];
   checkoutBtn.classList.add("hidden");
   checkoutBtn.innerHTML = "";
