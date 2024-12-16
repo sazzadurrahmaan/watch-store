@@ -179,9 +179,9 @@ const SmartWatchStore = () => {
       {cart.length > 0 && (
         <div
           onClick={() => setCartVisible(true)}
-          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-[#FFBB5A] px-6 py-3 rounded-full shadow-lg cursor-pointer"
+          className="flex items-center text-[15px] sm:text-[18px] justify-center gap-4 bg-[#FFBB5A] text-[#364A63]  font-bold px-6 py-3  rounded-full shadow-lg fixed bottom-0 sm:bottom-2 left-1/2 transform -translate-x-1/2 cursor-pointer"
         >
-          Checkout ({totalQuantity})
+          Checkout <span className="bg-white px-4 rounded-[5px] w-[19px] h-[19px">{totalQuantity}</span>
         </div>
       )}
 
