@@ -6,6 +6,7 @@ import BlackImage from './assets/images/black.png';
 import StarImage from './assets/images/Vector.svg';
 import StarHalfImage from './assets/images/star-half.svg';
 import EmptyImage from './assets/images/empty-star.svg';
+import HeartImage from './assets/images/heart.svg';
 
 const starData = [
   { id: 1, image: StarImage },
@@ -91,20 +92,31 @@ const SmartWatchStore = () => {
           </div>
 
           {/* Price */}
-          <div className="flex gap-3">
-            <p className="text-[#8091A7] line-through">$99.00</p>
-            <p className="text-[#6576FF] font-bold">$79.00</p>
-          </div>
-
+          <div className="flex items-center gap-3 leading-[30px]">
+          <p className="text-[#8091A7] line-through text-[15px] sm:text-[20px] font-normal">$99.00</p>
+          <p className="text-[#6576FF] text-[18px]  sm:text-[24px] font-bold">$79.00</p>
+        </div>
+        
+        <p className="mt-2 leading-[30px] font-normal text-[15px] sm:text-[18px] text-[#8091A7] py-2">
+          I must explain to you how all this mistaken idea of denoun cing ple praising pain was born and I will give you
+          a complete account of the system, and expound the actual teaching.
+        </p>
+         
+        <div className="text-[#8091A7] flex gap-5 py-5">
+          <p className="font-normal text-[12px] sm:text-[14px] leading-[23px] flex flex-col">Type<span
+              className="font-bold text-[14px] sm:text-[16px] text-[#364A63]">Watch </span> </p>
+          <p className="font-normal text-[12px] sm:text-[14px]  leading-[23px] flex flex-col">Model Number<span
+              className="font-bold text-[16px] text-[#364A63]">Forerunner 290XT</span> </p>
+        </div>
           {/* Band Color */}
-          <div className="mt-5">
-            <p className="font-bold text-[18px] mb-2">Band Color</p>
-            <div className="flex gap-3">
+          <div className="mb-4 text-[#364A63]">
+          <p className="font-bold text-[16px] sm:text-[18px] mb-2">Band Color</p>
+            <div className="flex gap-3 items-center" >
               {Object.keys(thumbnailMap).map((color) => (
                 <div
                   key={color}
                   onClick={() => updateThumbnail(color)}
-                  className={`w-[24px] h-[24px] rounded-full border cursor-pointer ${
+                  className={`band-option w-[20px] sm:w-[24px] h-[20px] sm:h-[24px] rounded-full border flex items-center justify-center cursor-pointer ${
                     selectedColor === color ? "ring-2 ring-blue-500" : ""
                   }`}
                 >
@@ -119,17 +131,17 @@ const SmartWatchStore = () => {
 
           {/* Wrist Size */}
           <div className="mt-5">
-            <p className="font-bold text-[18px] mb-2">Wrist Size</p>
-            <div className="flex gap-3">
+            <p className="text-[16px] sm:text-[18px] font-bold mb-2 text-[#364A63]">Wrist Size</p>
+            <div className="flex gap-2 font-bold text-[#364A63] ">
               {["S", "M", "L", "XL"].map((size) => (
                 <button
                   key={size}
                   onClick={() => updateSize(size)}
-                  className={`border px-4 py-1 rounded ${
+                  className={`border  px-4 py-1 rounded-[3px] ${
                     selectedSize === size ? "border-blue-500" : ""
                   }`}
                 >
-                  {size} ${69 + (size.charCodeAt(0) - "S".charCodeAt(0)) * 10}
+                  {size} <span className="text-[#8091A7]">${69 + (size.charCodeAt(0) - "S".charCodeAt(0)) * 10}</span>
                 </button>
               ))}
             </div>
@@ -138,23 +150,26 @@ const SmartWatchStore = () => {
           {/* Quantity */}
           <div className="mt-5 flex gap-3 items-center">
             <div className="flex border rounded">
-              <button onClick={() => updateQuantity(-1)} className="px-3 py-2">
+              <button onClick={() => updateQuantity(-1)} className="px-3 py-2 flex items-center border text-[18px] rounded-[3px] overflow-hidden  text-[#8091A7]">
                 −
               </button>
               <input
                 value={quantity}
                 readOnly
-                className="w-14 text-center border-l border-r"
+                className="text-[#364A63] w-14 px-3 py-2 text-center border-l border-r focus:outline-none"
               />
-              <button onClick={() => updateQuantity(1)} className="px-3 py-2">
+              <button onClick={() => updateQuantity(1)} className="px-3 py-2 flex items-center border text-[18px] rounded-[3px] overflow-hidden  text-[#8091A7]">
                 +
               </button>
             </div>
             <button
               onClick={addToCart}
-              className="bg-[#6576FF] text-white px-4 py-2 rounded font-bold"
+              className="bg-[#6576FF] text-white px-4 py-2 rounded-md font-bold text-[13px] leading-[20px]"
             >
               Add to Cart
+            </button>
+              <button class="w-[17px] sm:w-[20px] h-[17px] sm:h-[20px]">
+              <img src={HeartImage} alt="heartimage" />
             </button>
           </div>
         </div>
