@@ -165,14 +165,17 @@ function openCartModal() {
     totalQnt += item.quantity;
     
     listItem.innerHTML = `
-      <ul class="grid grid-cols-7 items-center justify-center py-5 gap-4 text-[14px] font-normal text-[#364A63] ">
-        <li class="font-normal  col-span-3 text-nowrap">${item.name}</li> 
-        <li class="col-span-1">${item.color}</li> 
-        <li class="col-span-1 font-bold">${item.size}</li> 
-         <li class="col-span-1 font-bold">${item.quantity}<p>
-        <li class="col-span-1 font-bold">$${itemTotal.toFixed(2)}</li>
-      </ul>
-    `;
+    <ul class="grid grid-cols-8 relative items-center gap-4 text-[14px] font-normal text-[#364A63] py-2">
+      <li class="col-span-1">
+        <img src="images/${item.color}.png" alt="${item.name}" class="w-[50px] h-[50px] rounded-lg object-cover">
+      </li>
+      <li class="col-span-3 font-normal">${item.name}</li>
+      <li class="col-span-1">${item.color}</li>
+      <li class="col-span-1 font-bold">${item.size}</li>
+      <li class="col-span-1 font-bold">${item.quantity}</li>
+      <li class="col-span-1 font-bold absolute right-0">$${itemTotal.toFixed(2)}</li>
+    </ul>
+  `;
 
     cartItemsList.appendChild(listItem);
   });
