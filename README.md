@@ -40,32 +40,31 @@ This repository contains two branches:
 
 To view the specific version of the project:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sazzadurrahmaan/watch-store.git
+### 1. Clone the repository:
+    ```bash
+    git clone https://github.com/sazzadurrahmaan/watch-store.git
 
-2. For Html version 
-  ```bash 
-  git checkout html-version
+### 2. For Html version 
+    ```bash 
+    git checkout html-version
 
-3. For React version 
-  ```bash
+### 3. For React version 
+    ```bash
   git checkout react-version
 
-
-⚡ Quick Start (HTML Version)
+## ⚡ Quick Start (HTML Version)
 Open the index.html file in your browser.
 Ensure you have an active internet connection for Tailwind CSS (if linked via CDN).
 
-⚛️ Quick Start (React Version)
+## ⚛️ Quick Start (React Version)
 Go to the react-version branch.
-Install dependencies:
+### Install dependencies:
 
-  ```bash
-  npm install
-Start the development Server
- ```bash
+    ```bash
+    npm install
+### Start the development Server
+    ```bash
  npm run dev
 
-Visit http://localhost:5173 to view the project.
+### Visit http://localhost:5173 to view the project.
 
