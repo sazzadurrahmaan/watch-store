@@ -63,7 +63,6 @@ Go to the react-version branch.
     ```bash
            npm install
 ### Start the development Server
-    ```bash
            npm run dev
 
 ### Visit http://localhost:5173 to view the project.
